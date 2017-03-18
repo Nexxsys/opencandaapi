@@ -2,17 +2,13 @@
 	<head><title>Current Earthquake List</title></head>
 <body>
 	<h1> The Results: </h1>
-{% for key, value in dataresults.items() %}
-  {{ dataresults.item }}
-{% endfor %}
-
-<table>
-{% for key, value in dataresults.items() %}
+  <table>
+    {% for key, value in dataresults.items() %}
    <tr>
         <th> {{ key }} </th>
         <td> {{ value }} </td>
    </tr>
-{% endfor %}
+   {% endfor %}
 </table>
 </body>
 </html>
