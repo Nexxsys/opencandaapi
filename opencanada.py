@@ -7,7 +7,7 @@
  @license: http://data.gc.ca/eng/open-government-licence-canada
 """
 from flask import Flask, render_template, request
-import json, simplejson
+import json
 import requests # Needed for API use
 
 app = Flask(__name__)
@@ -21,9 +21,11 @@ def results():
     jdata    = response.json()
     #print jdata['metadata']['request']['name']['en']
 
-#    for (key, value) in jdata['latest'].items():
-#            compiledresults = key, "->", value  # works, except not iterating
-
+    #for (key, value) in jdata['latest'].items():
+    #        compiledresults =  key, "->", value  # works, except not iterating
+    results = json.dumps(jdata['latest'], sort_keys = True)
+    #return render_template('results.html', dataresults=jdata['latest'])
+    #return render_template('results.html', dataresults=results)
     return render_template('results.html', dataresults=jdata['latest'])
 #           print key, "->", value # Console Command
 @app.route('/')
